@@ -22,7 +22,7 @@ const GradientsList = () => {
         console.log(data)
       })
       .catch(error => { dispatch({ type: "FETCH_FAILURE", payload: error.message }) })
-  }, [])
+  }, [full])
   const list = gradients.filter((el) => {
     if (filter === "all") {
       return true
