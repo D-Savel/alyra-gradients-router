@@ -1,9 +1,11 @@
 import { useFilter } from '../context/FilterContext'
 import Gradient from "./Gradient"
-import { gradients } from '../useGradients'
+import { useGradient } from '../reducers/useGradient'
 
 const GradientsList = () => {
   const { filter } = useFilter()
+  useGradient()
+  const { gradients } = useGradient()
 
   const list = gradients.filter((el) => {
     if (filter === "all") {
@@ -29,4 +31,4 @@ const GradientsList = () => {
   )
 }
 
-export default GradientsList
+export default GradientsList;
