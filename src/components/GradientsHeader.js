@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { gradients as list } from "../gradients"
+import { gradients as list } from "../reducers/gradients"
 import { ReactComponent as SvgToggle } from "bootstrap-icons/icons/arrow-clockwise.svg"
 import { ReactComponent as Next } from "bootstrap-icons/icons/arrow-right.svg"
 import { ReactComponent as Prev } from "bootstrap-icons/icons/arrow-left.svg"
