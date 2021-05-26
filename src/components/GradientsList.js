@@ -1,22 +1,10 @@
 import { useFilter } from '../context/FilterContext'
 import Gradient from "./Gradient"
-import { useEffect, useState } from 'react'
+import { gradients } from '../useGradients'
 
 const GradientsList = () => {
   const { filter } = useFilter()
-  const [gradients, setGradients] = useState([]) //usereducer
-  useEffect(() => {
-    fetch(`https://gradients-api.herokuapp.com/gradients/`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`something wrong with request: ${response.status}`)
-        }
-        return response.json()
-      })
-      .then(data => {
-        setGradients(data)
-      }, [])
-  })
+
   const list = gradients.filter((el) => {
     if (filter === "all") {
       return true
