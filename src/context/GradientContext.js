@@ -8,8 +8,7 @@ export const GradientContextProvider = ({ children }) => {
     gradients: [],
     gradient: {},
     loading: false,
-    full: false,
-    path: 0
+    full: false
   })
 
   return (
