@@ -13,7 +13,7 @@ const GradientsList = () => {
     }
     return el.tags.includes(filter)
   })
-  return !!loading ? (
+  return !!loading ?
     <ul className="row list-unstyled" >
       {
         list.map((el, id) => {
@@ -30,7 +30,7 @@ const GradientsList = () => {
           )
         })
       }
-    </ul >) : (<p>Loading...</p>)
+    </ul > : <p>Loading...</p>
 }
 
 export default GradientsList;
