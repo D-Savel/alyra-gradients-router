@@ -1,28 +1,12 @@
-import { useEffect } from 'react'
 import { useFilter } from '../context/FilterContext'
 import { useGradient } from '../context/GradientContext'
 import Gradient from "./Gradient"
 
 const GradientsList = () => {
   const { filter } = useFilter()
-  const { state, dispatch } = useGradient()
-  const { loading, gradients, full } = state
+  const { state } = useGradient()
+  const { loading, gradients } = state
 
-  useEffect(() => {
-    dispatch({ type: "FETCH_INIT" })
-    fetch(`https://gradients-api.herokuapp.com/gradients/`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`something wrong with request: ${response.status}`)
-        }
-        return response.json()
-      })
-      .then(data => {
-        dispatch({ type: "FETCH_SUCCESS", payload: data })
-        console.log(data)
-      })
-      .catch(error => { dispatch({ type: "FETCH_FAILURE", payload: error.message }) })
-  }, [full])
   const list = gradients.filter((el) => {
     if (filter === "all") {
       return true
@@ -32,7 +16,7 @@ const GradientsList = () => {
   return !!loading ? (
     <ul className="row list-unstyled" >
       {
-        list.map((el) => {
+        list.map((el, id) => {
           const { name, start, end, tags = [] } = el
           return (
             <Gradient
@@ -41,6 +25,7 @@ const GradientsList = () => {
               colorEnd={end}
               name={name}
               tags={tags}
+              id={id}
             />
           )
         })

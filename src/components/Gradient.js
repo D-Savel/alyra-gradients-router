@@ -4,7 +4,7 @@ import GradientCode from "./GradientCode"
 import GradientTags from "./GradientTags"
 import GradientFullButton from "./GradientFullButton"
 
-const Gradient = ({ colorStart, colorEnd, name, tags }) => {
+const Gradient = ({ colorStart, colorEnd, name, tags, id }) => {
   return (
     <li className="col-lg-3 col-md-4 col-sm-6">
       <div className="card p-3 mb-4 shadow">
@@ -12,7 +12,7 @@ const Gradient = ({ colorStart, colorEnd, name, tags }) => {
         <GradientTitle>{name}</GradientTitle>
         <GradientCode colorStart={colorStart} colorEnd={colorEnd} />
         <GradientTags tags={tags} />
-        <GradientFullButton />
+        <GradientFullButton id={id} />
       </div>
     </li>
   )

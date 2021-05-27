@@ -9,8 +9,8 @@ const GradientsHeader = (props) => {
   const { children } = props
   const { state } = useGradient()
   const { gradients } = state
-  const list = gradients
-  const length = list.length
+  const length = gradients.length
+
 
   const chooseGradient = () => Math.floor(Math.random() * length)
 
@@ -24,9 +24,9 @@ const GradientsHeader = (props) => {
   const handlePrevClick = () => {
     setRandomGradient(randomGradient === 0 ? length - 1 : randomGradient - 1)
   }
-
+  console.log(gradients)
   const style = {
-    /*backgroundImage: `linear-gradient(to right, ${list[randomGradient].start}, ${list[randomGradient].end})`*/
+    /*  backgroundImage: `linear-gradient(to right, ${gradients[randomGradient].start}, ${gradients[randomGradient].end})`*/
   }
   return (
     <header className="text-center bg-dark text-white py-5 mb-5" style={{ style }}>
