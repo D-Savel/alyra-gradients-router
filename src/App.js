@@ -10,6 +10,9 @@ function App() {
     <GradientContextProvider>
       <Router>
         <Switch>
+          <Route path="/gradients/:id/">
+            <GradientFull />
+          </Route>
           <Route path="/">
             <div className="App min-vh-100 d-flex flex-column">
               <GradientsHeader>
@@ -23,9 +26,7 @@ function App() {
               <Footer />
             </div>
           </Route>
-          <Route path="/gradients/:id">
-            <GradientFull />
-          </Route>
+
         </Switch>
       </Router>
     </GradientContextProvider>

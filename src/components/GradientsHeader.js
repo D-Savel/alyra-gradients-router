@@ -24,7 +24,6 @@ const GradientsHeader = (props) => {
   const handlePrevClick = () => {
     setRandomGradient(randomGradient === 0 ? length - 1 : randomGradient - 1)
   }
-  console.log(gradients)
   const style = {
     /*  backgroundImage: `linear-gradient(to right, ${gradients[randomGradient].start}, ${gradients[randomGradient].end})`*/
   }

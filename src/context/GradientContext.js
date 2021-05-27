@@ -8,7 +8,8 @@ export const GradientContextProvider = ({ children }) => {
     gradients: [],
     gradient: {},
     loading: false,
-    full: false
+    full: false,
+    path: 0
   })
   useEffect(() => {
     dispatch({ type: "FETCH_INIT" })
