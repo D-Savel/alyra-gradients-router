@@ -11,7 +11,7 @@ const GradientFull = ({ id }) => {
     backgroundImage: `linear-gradient(to right, ${gradient.start}, ${gradient.end})`
   }
   return (
-    <div className="App min-vh-100 d-flex flex-column">
+    <div className="min-vh-100 d-flex flex-column">
       <div className="flex-fill d-flex" style={style}>
         <nav className="fixed-top nav">
           <Link
