@@ -2,13 +2,10 @@ import Gradients from "../components/Gradients"
 import GradientsHeader from "../components/GradientsHeader"
 import Footer from "../components/Footer"
 import useFetching from "../hooks/useFetching";
-import { useGradient } from "../context/GradientContext";
 
 
 const Home = () => {
-  const { state } = useGradient()
-  const { full } = state
-  useFetching(0, full)
+  useFetching(0)
   return (
     <div className="App min-vh-100 d-flex flex-column">
       <GradientsHeader>

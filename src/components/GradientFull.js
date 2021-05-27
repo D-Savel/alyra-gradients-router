@@ -4,7 +4,7 @@ import useFetching from '../hooks/useFetching';
 import GradientCode from './GradientCode';
 
 const GradientFull = ({ id }) => {
-  useFetching(id, id)
+  useFetching(id)
   const { state } = useGradient()
   const { gradient } = state
   const style = {
@@ -20,18 +20,20 @@ const GradientFull = ({ id }) => {
             className="btn btn-dark me-2"
             to="/"
           >Tous</Link>
-          <Link
-            aria-label="Cliquer pour afficher le dégradé précédent"
-            type="button"
-            className="btn btn-dark text-white me-2"
-            to={`/gradient/${Number(id) - 1}`}
-          >Précédent</Link>
-          <Link
-            aria-label="Cliquer pour afficher le dégradé suivant"
-            type="button"
-            className="btn btn-dark text-white me-2"
-            to={`/gradient/${Number(id) + 1}`}
-          >Suivant</Link>
+          {id > 1 ?
+            <Link
+              aria-label="Cliquer pour afficher le dégradé précédent"
+              type="button"
+              className="btn btn-dark text-white me-2"
+              to={`/gradient/${Number(id) - 1}`}
+            >Précédent</Link> : <></>}
+          {id < 25 ?
+            <Link
+              aria-label="Cliquer pour afficher le dégradé suivant"
+              type="button"
+              className="btn btn-dark text-white me-2"
+              to={`/gradient/${Number(id) + 1}`}
+            >Suivant</Link> : <></>}
         </nav>
         <div className="m-auto text-center">
           <h1 className="text-white display-1">{gradient.name}</h1>

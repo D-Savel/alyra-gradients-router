@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useGradient } from "../context/GradientContext";
 
-const useFetching = (id, dep) => {
+const useFetching = (id) => {
   const { dispatch } = useGradient()
   useEffect(() => {
     dispatch({ type: "FETCH_INIT" })
@@ -18,7 +18,7 @@ const useFetching = (id, dep) => {
       })
       .catch(error => { dispatch({ type: "FETCH_FAILURE", payload: error.message }) })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dep])
+  }, [id])
 };
 
 export default useFetching;
