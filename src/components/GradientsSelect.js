@@ -5,8 +5,8 @@ const GradientsSelect = () => {
   const { filter, setFilter } = useFilter()
   const { state } = useGradient()
   const { gradients } = state
-  function allTags(gradients) {
-    /* retourner la liste des tags uniques */
+
+  const allTags = (gradients) => {
     let listTotal = []
     for (let element of gradients) {
       if ("tags" in element) {
@@ -16,7 +16,6 @@ const GradientsSelect = () => {
     const listTagsUnique = []
     listTotal.forEach((el) => {
       if (!listTagsUnique.includes(el)) {
-        //listTagsUnique = listTagsUnique.concat([el])
         listTagsUnique.push(el)
       }
     })
