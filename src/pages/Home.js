@@ -1,28 +1,11 @@
 import Gradients from "../components/Gradients"
 import GradientsHeader from "../components/GradientsHeader"
 import Footer from "../components/Footer"
-import { useEffect } from "react";
-import { useGradient } from "../context/GradientContext";
+import useFetching from "../hooks/useFetching";
+
 
 const Home = () => {
-  const { state, dispatch } = useGradient()
-  const { full } = state
-  console.log(full)
-  useEffect(() => {
-    dispatch({ type: "FETCH_INIT" })
-    fetch(`https://gradients-api.herokuapp.com/gradients/`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`something wrong with request: ${response.status}`)
-        }
-        return response.json()
-      })
-      .then(data => {
-        dispatch({ type: "FETCH_SUCCESS", payload: data })
-        console.log(data)
-      })
-      .catch(error => { dispatch({ type: "FETCH_FAILURE", payload: error.message }) })
-  }, [full])
+  useFetching(0)
   return (
     <div className="App min-vh-100 d-flex flex-column">
       <GradientsHeader>
