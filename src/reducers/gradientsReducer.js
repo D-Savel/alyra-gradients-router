@@ -11,6 +11,12 @@ const gradientsReducer = (state, action) => {
         loading: false,
         gradients: action.payload
       }
+    case "FETCH_SUCCESS_ID":
+      return {
+        ...state,
+        loading: false,
+        gradient: action.payload
+      }
     case "FETCH_FAILURE":
       return {
         ...state,

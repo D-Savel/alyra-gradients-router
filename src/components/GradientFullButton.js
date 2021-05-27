@@ -4,9 +4,9 @@ const GradientFullButton = ({ id }) => {
   return (
     <div className="mt-3">
 
-      <div className="btn btn-outine-dark w-100">
+      <button className="btn btn-outine-dark w-100">
         <Link to={`/gradient/${id}`}>Plein écran</Link>
-      </div>
+      </button>
     </div>
   );
 };
