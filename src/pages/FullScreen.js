@@ -6,8 +6,7 @@ import { useGradient } from "../context/GradientContext";
 const FullScreen = () => {
   const params = useParams()
   const { id } = params
-  const { state, dispatch } = useGradient()
-  const { full } = state
+  const { dispatch } = useGradient()
   useEffect(() => {
     dispatch({ type: "FETCH_INIT" })
     fetch(`https://gradients-api.herokuapp.com/gradients/${id}`)
@@ -22,7 +21,7 @@ const FullScreen = () => {
         console.log(data)
       })
       .catch(error => { dispatch({ type: "FETCH_FAILURE", payload: error.message }) })
-  }, [full])
+  }, [id])
   return (
     <div>
       <GradientFull id={id} />
