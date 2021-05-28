@@ -4,8 +4,7 @@ import Gradient from "./Gradient"
 
 const GradientsList = () => {
   const { filter } = useFilter()
-  const { state } = useGradient()
-  const { loading, gradients } = state
+  const { gradients } = useGradient()
 
   const list = gradients.filter((el) => {
     if (filter === "all") {
@@ -13,7 +12,7 @@ const GradientsList = () => {
     }
     return el.tags.includes(filter)
   })
-  return !!loading ?
+  return (
     <ul className="row list-unstyled" >
       {
         list.map((el, id) => {
@@ -25,12 +24,12 @@ const GradientsList = () => {
               colorEnd={end}
               name={name}
               tags={tags}
-              id={id}
+              id={id + 1}
             />
           )
         })
       }
-    </ul > : <p>Loading...</p>
+    </ul >)
 }
 
 export default GradientsList;

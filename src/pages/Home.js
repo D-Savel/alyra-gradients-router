@@ -1,11 +1,9 @@
 import Gradients from "../components/Gradients"
 import GradientsHeader from "../components/GradientsHeader"
 import Footer from "../components/Footer"
-import useFetching from "../hooks/useFetching";
 
 
 const Home = () => {
-  useFetching(0)
   return (
     <div className="App min-vh-100 d-flex flex-column">
       <GradientsHeader>

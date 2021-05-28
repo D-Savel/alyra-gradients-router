@@ -3,8 +3,7 @@ import { useGradient } from '../context/GradientContext'
 
 const GradientsSelect = () => {
   const { filter, setFilter } = useFilter()
-  const { state } = useGradient()
-  const { gradients } = state
+  const { gradients } = useGradient()
 
   const allTags = (gradients) => {
     let listTotal = []

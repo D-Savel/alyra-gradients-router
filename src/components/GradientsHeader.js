@@ -7,8 +7,7 @@ import { useGradient } from "../context/GradientContext"
 
 const GradientsHeader = (props) => {
   const { children } = props
-  const { state } = useGradient()
-  const { gradients } = state
+  const { gradients } = useGradient()
   const length = gradients.length
 
 
@@ -24,11 +23,12 @@ const GradientsHeader = (props) => {
   const handlePrevClick = () => {
     setRandomGradient(randomGradient === 0 ? length - 1 : randomGradient - 1)
   }
+  console.log(gradients[randomGradient])
   const style = {
-    /*  backgroundImage: `linear-gradient(to right, ${gradients[randomGradient].start}, ${gradients[randomGradient].end})`*/
+    backgroundImage: `linear-gradient(to right, ${gradients[randomGradient].start}, ${gradients[randomGradient].end})`
   }
   return (
-    <header className="text-center bg-dark text-white py-5 mb-5" style={{ style }}>
+    <header className="text-center bg-dark text-white py-5 mb-5" style={style}>
       {children}
       <button
         aria-label="Clicker pour afficher le dégradé précédant"

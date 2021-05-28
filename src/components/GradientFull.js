@@ -1,14 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGradient } from '../context/GradientContext'
-import useFetching from '../hooks/useFetching';
 import GradientCode from './GradientCode';
 
-const GradientFull = ({ id }) => {
-  useFetching(id)
-  const { state } = useGradient()
-  const { gradient } = state
+const GradientFull = () => {
+  const { gradients } = useGradient()
+  const params = useParams()
+  const { id } = params
   const style = {
-    backgroundImage: `linear-gradient(to right, ${gradient.start}, ${gradient.end})`
+    backgroundImage: `linear-gradient(to right, ${gradients[id - 1].start}, ${gradients[id - 1].end})`
   }
   return (
     <div className="min-vh-100 d-flex flex-column">
@@ -27,7 +26,7 @@ const GradientFull = ({ id }) => {
               className="btn btn-dark me-2"
               to={`/gradient/${Number(id) - 1}`}
             >Précédent</Link> : <></>}
-          {id < 25 ?
+          {id < gradients.length ?
             <Link
               aria-label="Cliquer pour afficher le dégradé suivant"
               type="button"
@@ -36,9 +35,9 @@ const GradientFull = ({ id }) => {
             >Suivant</Link> : <></>}
         </nav>
         <div className="m-auto text-center">
-          <h1 className="text-white display-1">{gradient.name}</h1>
+          <h1 className="text-white display-1">{gradients[id - 1].name}</h1>
           <div className="bg-white shadow p-2 rounded">
-            <GradientCode colorStart={gradient.start} colorEnd={gradient.end} />
+            <GradientCode colorStart={gradients[id - 1].start} colorEnd={gradients[id - 1].end} />
           </div>
         </div>
       </div>
