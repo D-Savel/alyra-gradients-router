@@ -4,8 +4,9 @@ export const FilterContext = createContext()
 
 export const FilterContextProvider = ({ children }) => {
   const [filter, setFilter] = useState('all')
+  const [id, setId] = useState('')
   return (
-    <FilterContext.Provider value={{ filter, setFilter }}>
+    <FilterContext.Provider value={{ filter, setFilter, id, setId }}>
       {children}
     </FilterContext.Provider>
   )

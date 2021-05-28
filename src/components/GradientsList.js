@@ -1,42 +1,28 @@
-import { useEffect } from 'react'
 import { useFilter } from '../context/FilterContext'
 import { useGradient } from '../context/GradientContext'
 import Gradient from "./Gradient"
 
 const GradientsList = () => {
   const { filter } = useFilter()
-  const { state, dispatch } = useGradient()
-  const { loading, gradients, full } = state
+  const { gradients } = useGradient()
 
-  useEffect(() => {
-    dispatch({ type: "FETCH_INIT" })
-    fetch(`https://gradients-api.herokuapp.com/gradients/`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`something wrong with request: ${response.status}`)
-        }
-        return response.json()
-      })
-      .then(data => {
-        dispatch({ type: "FETCH_SUCCESS", payload: data })
-        console.log(data)
-      })
-      .catch(error => { dispatch({ type: "FETCH_FAILURE", payload: error.message }) })
-  }, [full])
+  console.log('gradients', gradients)
+  console.log('filter', filter)
+
   const list = gradients.filter((el) => {
     if (filter === "all") {
       return true
     }
     return el.tags.includes(filter)
   })
-  return !!loading ? (
+  return (
     <ul className="row list-unstyled" >
       {
         list.map((el) => {
-          const { name, start, end, tags = [] } = el
+          const { name, start, end, tags, id = [] } = el
           return (
             <Gradient
-              key={name}
+              key={id}
               colorStart={start}
               colorEnd={end}
               name={name}
@@ -45,7 +31,7 @@ const GradientsList = () => {
           )
         })
       }
-    </ul >) : (<p>Loading...</p>)
+    </ul >)
 }
 
 export default GradientsList;
