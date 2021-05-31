@@ -1,25 +1,16 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useIsMounted } from "../hooks/useIsMounted";
-import gradientsReducer from "../reducers/gradientsReducer";
+import gradientsReducer from '../reducers/gradientsReducer';
 
 export const GradientContext = createContext()
 
 export const GradientContextProvider = ({ children }) => {
   const isMounted = useIsMounted()
-
   const [state, dispatch] = useReducer(gradientsReducer, {
-    gradients: [
-      {
-        name: "",
-        start: "",
-        end: "",
-        tags: [],
-        id: 0
-      }
-    ],
-    loading: false
+    gradients: [],
+    loading: true
   })
-  const { loading, gradients } = state
+  const {gradients, loading} = state
   useEffect(() => {
     dispatch({ type: "FETCH_INIT" })
     fetch(`https://gradients-api.herokuapp.com/gradients/`)
@@ -40,8 +31,11 @@ export const GradientContextProvider = ({ children }) => {
         }
       })
   }, [isMounted])
+
   return (
-    <GradientContext.Provider value={{ gradients }}>{loading ? <p>loading...</p> : children}</GradientContext.Provider>
+    <GradientContext.Provider value={{ gradients, loading }}>
+      {children}
+      </GradientContext.Provider>
   )
 }
 export const useGradient = () => {

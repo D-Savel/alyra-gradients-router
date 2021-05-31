@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 function App() {
   return (
     <GradientContextProvider>
-      <Router>
+      <Router>  
         <Switch>
           <Route path="/gradient/:id/">
             <FullScreen />
