@@ -1,8 +1,27 @@
 import { useFilter } from '../context/FilterContext'
-import { uniqueTags as tags } from "../gradients"
+import { useGradient } from '../context/GradientContext'
 
 const GradientsSelect = () => {
   const { filter, setFilter } = useFilter()
+  const { gradients } = useGradient()
+
+  const allTags = (gradients) => {
+    let listTotal = []
+    for (let element of gradients) {
+      if ("tags" in element) {
+        listTotal = listTotal.concat(element.tags)
+      }
+    }
+    const listTagsUnique = []
+    listTotal.forEach((el) => {
+      if (!listTagsUnique.includes(el)) {
+        listTagsUnique.push(el)
+      }
+    })
+    return listTagsUnique
+  }
+
+  const uniqueTags = allTags(gradients)
   const handleSelectChange = (e) => {
     setFilter(e.target.value)
   }
@@ -18,7 +37,7 @@ const GradientsSelect = () => {
         onChange={handleSelectChange}
       >
         <option value="all">Tous</option>
-        {tags.map((el) => (
+        {uniqueTags.map((el) => (
           <option key={el} value={el}>
             {el}
           </option>
