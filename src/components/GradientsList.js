@@ -21,13 +21,8 @@ const GradientsList = () => {
   return (
     <ul className="row list-unstyled" >
       {
-<<<<<<< HEAD
-        list.map((el) => {
-          const { name, start, end, tags, id = [] } = el
-=======
         list.map((el, id) => {
           const { name, start, end, tags = [] } = el
->>>>>>> 6cb735726a383bb583a3fa7a7dd6b754d5aed2f6
           return (
             <Gradient
               key={id}

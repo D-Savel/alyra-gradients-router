@@ -8,19 +8,7 @@ function App() {
   console.log('App')
   return (
     <GradientContextProvider>
-<<<<<<< HEAD
-      <div className="App min-vh-100 d-flex flex-column">
-        <main className="container">
-          <GradientsHeader>
-            <h1 className="display-1">Alyra Gradients</h1>
-            <p className="tagline">Ultime collection de plus beaux dégradés</p>
-          </GradientsHeader>
-          <Gradients />
-        </main>
-        <Footer />
-      </div>
-=======
-      <Router>  
+      <Router>
         <Switch>
           <Route path="/gradient/:id/">
             <FullScreen />
@@ -30,7 +18,6 @@ function App() {
           </Route>
         </Switch>
       </Router>
->>>>>>> 6cb735726a383bb583a3fa7a7dd6b754d5aed2f6
     </GradientContextProvider>
   )
 }
