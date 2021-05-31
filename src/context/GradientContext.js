@@ -13,6 +13,7 @@ export const GradientContextProvider = ({ children }) => {
     full: false
   })
 
+  console.log('context')
   const { loading, gradients } = state
   const isMounted = useIsMounted()
 
@@ -35,7 +36,7 @@ export const GradientContextProvider = ({ children }) => {
           dispatch({ type: "FETCH_FAILURE", payload: error.message })
         }
       })
-  }, [isMounted])
+  }, [])
 
   return (
     <GradientContext.Provider value={{ gradients }}>

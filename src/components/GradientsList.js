@@ -6,6 +6,9 @@ const GradientsList = () => {
   const { filter } = useFilter()
   const { gradients } = useGradient()
 
+
+  console.log('gradientlist')
+
   console.log('gradients', gradients)
   console.log('filter', filter)
 

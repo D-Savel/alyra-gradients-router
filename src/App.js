@@ -4,11 +4,11 @@ import Footer from "./components/Footer"
 import { GradientContextProvider } from "./context/GradientContext"
 
 function App() {
+  console.log('App')
   return (
     <GradientContextProvider>
       <div className="App min-vh-100 d-flex flex-column">
         <main className="container">
-          <h1 className="text-center my-4">Alyra Gradients</h1>
           <GradientsHeader>
             <h1 className="display-1">Alyra Gradients</h1>
             <p className="tagline">Ultime collection de plus beaux dégradés</p>
